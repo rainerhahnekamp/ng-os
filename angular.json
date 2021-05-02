@@ -114,6 +114,456 @@
           }
         }
       }
+    },
+    "vocabulary-trainer": {
+      "projectType": "application",
+      "root": "apps/vocabulary-trainer",
+      "sourceRoot": "apps/vocabulary-trainer/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/vocabulary-trainer",
+            "index": "apps/vocabulary-trainer/src/index.html",
+            "main": "apps/vocabulary-trainer/src/main.ts",
+            "polyfills": "apps/vocabulary-trainer/src/polyfills.ts",
+            "tsConfig": "apps/vocabulary-trainer/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/vocabulary-trainer/src/favicon.ico",
+              "apps/vocabulary-trainer/src/assets"
+            ],
+            "styles": ["apps/vocabulary-trainer/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/vocabulary-trainer/src/environments/environment.ts",
+                  "with": "apps/vocabulary-trainer/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "vocabulary-trainer:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "vocabulary-trainer:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "vocabulary-trainer:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/vocabulary-trainer/src/**/*.ts",
+              "apps/vocabulary-trainer/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/vocabulary-trainer"],
+          "options": {
+            "jestConfig": "apps/vocabulary-trainer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "vocabulary-trainer-e2e": {
+      "root": "apps/vocabulary-trainer-e2e",
+      "sourceRoot": "apps/vocabulary-trainer-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/vocabulary-trainer-e2e/cypress.json",
+            "tsConfig": "apps/vocabulary-trainer-e2e/tsconfig.e2e.json",
+            "devServerTarget": "vocabulary-trainer:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "vocabulary-trainer:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/vocabulary-trainer-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "memory": {
+      "projectType": "application",
+      "root": "apps/memory",
+      "sourceRoot": "apps/memory/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/memory",
+            "index": "apps/memory/src/index.html",
+            "main": "apps/memory/src/main.ts",
+            "polyfills": "apps/memory/src/polyfills.ts",
+            "tsConfig": "apps/memory/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/memory/src/favicon.ico", "apps/memory/src/assets"],
+            "styles": ["apps/memory/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/memory/src/environments/environment.ts",
+                  "with": "apps/memory/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "memory:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "memory:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "memory:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/memory/src/**/*.ts",
+              "apps/memory/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/memory"],
+          "options": {
+            "jestConfig": "apps/memory/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "memory-e2e": {
+      "root": "apps/memory-e2e",
+      "sourceRoot": "apps/memory-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/memory-e2e/cypress.json",
+            "tsConfig": "apps/memory-e2e/tsconfig.e2e.json",
+            "devServerTarget": "memory:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "memory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/memory-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "todo": {
+      "projectType": "application",
+      "root": "apps/todo",
+      "sourceRoot": "apps/todo/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/todo",
+            "index": "apps/todo/src/index.html",
+            "main": "apps/todo/src/main.ts",
+            "polyfills": "apps/todo/src/polyfills.ts",
+            "tsConfig": "apps/todo/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/todo/src/favicon.ico", "apps/todo/src/assets"],
+            "styles": ["apps/todo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/todo/src/environments/environment.ts",
+                  "with": "apps/todo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "todo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "todo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "todo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/todo/src/**/*.ts",
+              "apps/todo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/todo"],
+          "options": {
+            "jestConfig": "apps/todo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "todo-e2e": {
+      "root": "apps/todo-e2e",
+      "sourceRoot": "apps/todo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/todo-e2e/cypress.json",
+            "tsConfig": "apps/todo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "todo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/todo-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "weather": {
+      "projectType": "application",
+      "root": "apps/weather",
+      "sourceRoot": "apps/weather/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/weather",
+            "index": "apps/weather/src/index.html",
+            "main": "apps/weather/src/main.ts",
+            "polyfills": "apps/weather/src/polyfills.ts",
+            "tsConfig": "apps/weather/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/weather/src/favicon.ico",
+              "apps/weather/src/assets"
+            ],
+            "styles": ["apps/weather/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/weather/src/environments/environment.ts",
+                  "with": "apps/weather/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "weather:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "weather:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "weather:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/weather/src/**/*.ts",
+              "apps/weather/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/weather"],
+          "options": {
+            "jestConfig": "apps/weather/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "weather-e2e": {
+      "root": "apps/weather-e2e",
+      "sourceRoot": "apps/weather-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/weather-e2e/cypress.json",
+            "tsConfig": "apps/weather-e2e/tsconfig.e2e.json",
+            "devServerTarget": "weather:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "weather:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/weather-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -29,6 +29,34 @@
     "ng-app-platform-e2e": {
       "tags": [],
       "implicitDependencies": ["ng-app-platform"]
+    },
+    "vocabulary-trainer": {
+      "tags": []
+    },
+    "vocabulary-trainer-e2e": {
+      "tags": [],
+      "implicitDependencies": ["vocabulary-trainer"]
+    },
+    "memory": {
+      "tags": []
+    },
+    "memory-e2e": {
+      "tags": [],
+      "implicitDependencies": ["memory"]
+    },
+    "todo": {
+      "tags": []
+    },
+    "todo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["todo"]
+    },
+    "weather": {
+      "tags": []
+    },
+    "weather-e2e": {
+      "tags": [],
+      "implicitDependencies": ["weather"]
     }
   }
 }
