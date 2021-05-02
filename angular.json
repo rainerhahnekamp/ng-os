@@ -8,7 +8,7 @@
       "prefix": "ng-app-platform",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/ng-app-platform",
             "index": "apps/ng-app-platform/src/index.html",
@@ -21,7 +21,8 @@
               "apps/ng-app-platform/src/assets"
             ],
             "styles": ["apps/ng-app-platform/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/ng-app-platform/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -49,18 +50,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/ng-app-platform/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "ng-app-platform:build"
+            "browserTarget": "ng-app-platform:build",
+            "extraWebpackConfig": "apps/ng-app-platform/webpack.config.js",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-app-platform:build:production"
+              "browserTarget": "ng-app-platform:build:production",
+              "extraWebpackConfig": "apps/ng-app-platform/webpack.prod.config.js"
             }
           }
         },
@@ -80,11 +85,12 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "ngx-build-plus:karma",
           "outputs": ["coverage/apps/ng-app-platform"],
           "options": {
             "jestConfig": "apps/ng-app-platform/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/ng-app-platform/webpack.config.js"
           }
         }
       }
@@ -122,7 +128,7 @@
       "prefix": "ng-app-platform",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/apps/vocabulary-trainer",
             "index": "apps/vocabulary-trainer/src/index.html",
@@ -135,7 +141,8 @@
               "apps/vocabulary-trainer/src/assets"
             ],
             "styles": ["apps/vocabulary-trainer/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "extraWebpackConfig": "apps/vocabulary-trainer/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -163,18 +170,22 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "extraWebpackConfig": "apps/vocabulary-trainer/webpack.prod.config.js"
             }
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "vocabulary-trainer:build"
+            "browserTarget": "vocabulary-trainer:build",
+            "extraWebpackConfig": "apps/vocabulary-trainer/webpack.config.js",
+            "port": 4201
           },
           "configurations": {
             "production": {
-              "browserTarget": "vocabulary-trainer:build:production"
+              "browserTarget": "vocabulary-trainer:build:production",
+              "extraWebpackConfig": "apps/vocabulary-trainer/webpack.prod.config.js"
             }
           }
         },
@@ -194,11 +205,12 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "ngx-build-plus:karma",
           "outputs": ["coverage/apps/vocabulary-trainer"],
           "options": {
             "jestConfig": "apps/vocabulary-trainer/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/vocabulary-trainer/webpack.config.js"
           }
         }
       }
@@ -564,10 +576,61 @@
           }
         }
       }
+    },
+    "vocabulary-trainer-feature": {
+      "projectType": "library",
+      "root": "libs/vocabulary-trainer/feature",
+      "sourceRoot": "libs/vocabulary-trainer/feature/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/vocabulary-trainer/feature/src/**/*.ts",
+              "libs/vocabulary-trainer/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/vocabulary-trainer/feature"],
+          "options": {
+            "jestConfig": "libs/vocabulary-trainer/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ng-app-platform-core": {
+      "projectType": "library",
+      "root": "libs/ng-app-platform/core",
+      "sourceRoot": "libs/ng-app-platform/core/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng-app-platform/core/src/**/*.ts",
+              "libs/ng-app-platform/core/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng-app-platform/core"],
+          "options": {
+            "jestConfig": "libs/ng-app-platform/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "b3b5bf5d-32e0-4ed8-99df-46c639f793c6"
   },
   "schematics": {
     "@nrwl/angular": {

@@ -57,6 +57,12 @@
     "weather-e2e": {
       "tags": [],
       "implicitDependencies": ["weather"]
+    },
+    "vocabulary-trainer-feature": {
+      "tags": []
+    },
+    "ng-app-platform-core": {
+      "tags": []
     }
   }
 }

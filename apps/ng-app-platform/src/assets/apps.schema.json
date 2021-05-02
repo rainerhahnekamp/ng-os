@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Apps",
+  "description": "App Definition for ng-app-platform. This is an angular application which can run other angular applications via module federation",
+  "required": ["apps"],
+  "type": "object",
+
+  "properties": {
+    "apps": {
+      "description": "Collection of all available apps",
+      "type": "array",
+      "items": { "$ref": "#/$defs/app" }
+    }
+  },
+
+  "$defs": {
+    "app": {
+      "description": "App Configuration",
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "remoteName",
+        "remoteEntry",
+        "exposedModule"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name of the App",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the App",
+          "type": "string"
+        },
+        "iconUrl": {
+          "description": "Url of the App's icon. If not set, a placeholder will be used",
+          "type": "string"
+        },
+        "remoteName": {
+          "description": "Remote Name of the App",
+          "type": "string"
+        },
+        "remoteEntry": {
+          "description": "Url of App's remote entry",
+          "type": "string"
+        },
+        "exposedModule": {
+          "description": "Name of the exposed module",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

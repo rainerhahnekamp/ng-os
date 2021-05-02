@@ -1,0 +1,26 @@
+{
+  "$schema": "./apps.schema.json",
+  "apps": [
+    {
+      "name": "Vocabulary Trainer",
+      "description": "Train Spanish Vocabulary",
+      "remoteName": "vocabularyTrainer",
+      "remoteEntry": "http://localhost:4201/remoteEntry.js",
+      "exposedModule": "./Module"
+    },
+    {
+      "name": "Memory",
+      "description": "Memory Game",
+      "remoteName": "memory",
+      "remoteEntry": "http://localhost:4202/remoteEntry.js",
+      "exposedModule": "./Module"
+    },
+    {
+      "name": "Todo",
+      "description": "Todo Mini App",
+      "remoteName": "todo",
+      "remoteEntry": "http://localhost:4203/remoteEntry.js",
+      "exposedModule": "./Module"
+    }
+  ]
+}

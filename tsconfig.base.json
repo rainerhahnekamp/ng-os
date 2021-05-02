@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ng-app-platform/vocabulary-trainer/feature": [
+        "libs/vocabulary-trainer/feature/src/index.ts"
+      ],
+      "@ng-app-platform/ng-app-platform/core": [
+        "libs/ng-app-platform/core/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
