@@ -1,3 +1,14 @@
-<p>dashboard works!</p>
-
-<a routerLink="/vocabulary-trainer">Vocabulary Trainer</a>
+<ng-container
+  *ngIf="
+    appConfigurationsSupplier.appConfigurations$ | async as appConfigurations
+  "
+>
+  <div *ngFor="let appConfiguration of appConfigurations" class="icon-wrap">
+    <div>
+      <a [routerLink]="'/apps/' + appConfiguration.key"
+        ><img
+          [src]="appConfiguration.iconUrl || '/assets/default-app-icon.png'"
+      /></a>
+    </div>
+  </div>
+</ng-container>

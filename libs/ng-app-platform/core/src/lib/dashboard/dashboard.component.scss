@@ -1,0 +1,48 @@
+div {
+  box-sizing: border-box;
+}
+.icon-wrap {
+  display: inline-block;
+  padding: 10px;
+  width: 80px;
+  height: 70px;
+}
+.icon-wrap > div {
+  position: absolute;
+  background-color: lightgray;
+  height: 50px;
+  width: 58px;
+  display: block;
+  border-radius: 15px/30px;
+  background: rgb(247, 247, 247);
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 247, 247, 1) 0%,
+    rgba(229, 229, 229, 1) 100%
+  );
+}
+.icon-wrap > div:before {
+  content: '';
+  display: inline-block;
+  position: relative;
+  z-index: -1;
+  height: 59px;
+  width: 48px;
+  left: 5px;
+  top: -5px;
+  background-color: lightgray;
+  border-radius: 30px/15px;
+  background: rgb(247, 247, 247);
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 247, 247, 1) 0%,
+    rgba(229, 229, 229, 1) 100%
+  );
+}
+.icon-wrap > div img {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: -60px;
+  left: 9px;
+}

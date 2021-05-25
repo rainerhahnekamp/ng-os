@@ -18,13 +18,20 @@
       "description": "App Configuration",
       "type": "object",
       "required": [
+        "key",
         "name",
         "description",
         "remoteName",
         "remoteEntry",
-        "exposedModule"
+        "exposedModule",
+        "moduleName"
       ],
       "properties": {
+        "key": {
+          "description": "A unique key of this app which will also be used as url",
+          "type": "string",
+          "pattern": "^[a-z-]+$"
+        },
         "name": {
           "description": "Name of the App",
           "type": "string"
@@ -47,6 +54,10 @@
         },
         "exposedModule": {
           "description": "Name of the exposed module",
+          "type": "string"
+        },
+        "moduleName": {
+          "description": "This is the name of the module's class. It will be used in the Promise of loadChildren that is used by Angular's router",
           "type": "string"
         }
       }
