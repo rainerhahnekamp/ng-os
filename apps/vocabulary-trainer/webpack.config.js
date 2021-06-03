@@ -10,9 +10,9 @@ sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
 module.exports = {
   output: {
     uniqueName: 'vocabularyTrainer',
+    publicPath: 'auto',
   },
   optimization: {
-    // Only needed to bypass a temporary bug
     runtimeChunk: false,
   },
   plugins: [
@@ -34,4 +34,9 @@ module.exports = {
     }),
     sharedMappings.getPlugin(),
   ],
+  resolve: {
+    alias: {
+      ...sharedMappings.getAliases(),
+    },
+  },
 };

@@ -10,10 +10,10 @@ sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
 module.exports = {
   output: {
     uniqueName: 'ng-app-platform',
+    publicPath: 'auto'
   },
   optimization: {
-    // Only needed to bypass a temporary bug
-    runtimeChunk: false,
+    runtimeChunk: false
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -22,9 +22,14 @@ module.exports = {
         '@angular/common': { singleton: true, strictVersion: true },
         '@angular/router': { singleton: true, strictVersion: true },
 
-        ...sharedMappings.getDescriptors(),
-      },
+        ...sharedMappings.getDescriptors()
+      }
     }),
-    sharedMappings.getPlugin(),
+    sharedMappings.getPlugin()
   ],
+  resolve: {
+    alias: {
+      ...sharedMappings.getAliases()
+    }
+  }
 };

@@ -20,9 +20,7 @@
               "apps/ng-app-platform/src/favicon.ico",
               "apps/ng-app-platform/src/assets"
             ],
-            "styles": [
-              "apps/ng-app-platform/src/styles.scss"
-            ],
+            "styles": ["apps/ng-app-platform/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/ng-app-platform/webpack.config.js"
           },
@@ -88,9 +86,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/ng-app-platform"
-          ],
+          "outputs": ["coverage/apps/ng-app-platform"],
           "options": {
             "jestConfig": "apps/ng-app-platform/jest.config.js",
             "passWithNoTests": true,
@@ -120,9 +116,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/ng-app-platform-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/ng-app-platform-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -146,9 +140,7 @@
               "apps/vocabulary-trainer/src/favicon.ico",
               "apps/vocabulary-trainer/src/assets"
             ],
-            "styles": [
-              "apps/vocabulary-trainer/src/styles.scss"
-            ],
+            "styles": ["apps/vocabulary-trainer/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/vocabulary-trainer/webpack.config.js"
           },
@@ -214,9 +206,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/vocabulary-trainer"
-          ],
+          "outputs": ["coverage/apps/vocabulary-trainer"],
           "options": {
             "jestConfig": "apps/vocabulary-trainer/jest.config.js",
             "passWithNoTests": true,
@@ -246,9 +236,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/vocabulary-trainer-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/vocabulary-trainer-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -268,13 +256,8 @@
             "polyfills": "apps/memory/src/polyfills.ts",
             "tsConfig": "apps/memory/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/memory/src/favicon.ico",
-              "apps/memory/src/assets"
-            ],
-            "styles": [
-              "apps/memory/src/styles.scss"
-            ],
+            "assets": ["apps/memory/src/favicon.ico", "apps/memory/src/assets"],
+            "styles": ["apps/memory/src/styles.scss"],
             "scripts": [],
             "extraWebpackConfig": "apps/memory/webpack.config.js"
           },
@@ -340,9 +323,7 @@
         },
         "test": {
           "builder": "ngx-build-plus:karma",
-          "outputs": [
-            "coverage/apps/memory"
-          ],
+          "outputs": ["coverage/apps/memory"],
           "options": {
             "jestConfig": "apps/memory/jest.config.js",
             "passWithNoTests": true,
@@ -372,9 +353,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/memory-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/memory-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -394,13 +373,8 @@
             "polyfills": "apps/todo/src/polyfills.ts",
             "tsConfig": "apps/todo/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/todo/src/favicon.ico",
-              "apps/todo/src/assets"
-            ],
-            "styles": [
-              "apps/todo/src/styles.scss"
-            ],
+            "assets": ["apps/todo/src/favicon.ico", "apps/todo/src/assets"],
+            "styles": ["apps/todo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -461,9 +435,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/todo"
-          ],
+          "outputs": ["coverage/apps/todo"],
           "options": {
             "jestConfig": "apps/todo/jest.config.js",
             "passWithNoTests": true
@@ -492,9 +464,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/todo-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/todo-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -518,9 +488,7 @@
               "apps/weather/src/favicon.ico",
               "apps/weather/src/assets"
             ],
-            "styles": [
-              "apps/weather/src/styles.scss"
-            ],
+            "styles": ["apps/weather/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -581,9 +549,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/weather"
-          ],
+          "outputs": ["coverage/apps/weather"],
           "options": {
             "jestConfig": "apps/weather/jest.config.js",
             "passWithNoTests": true
@@ -612,9 +578,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/weather-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/weather-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -636,9 +600,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/vocabulary-trainer/feature"
-          ],
+          "outputs": ["coverage/libs/vocabulary-trainer/feature"],
           "options": {
             "jestConfig": "libs/vocabulary-trainer/feature/jest.config.js",
             "passWithNoTests": true
@@ -663,9 +625,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/ng-app-platform/core"
-          ],
+          "outputs": ["coverage/libs/ng-app-platform/core"],
           "options": {
             "jestConfig": "libs/ng-app-platform/core/jest.config.js",
             "passWithNoTests": true
@@ -690,9 +650,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/memory/feature"
-          ],
+          "outputs": ["coverage/libs/memory/feature"],
           "options": {
             "jestConfig": "libs/memory/feature/jest.config.js",
             "passWithNoTests": true
@@ -717,9 +675,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/types"
-          ],
+          "outputs": ["coverage/libs/types"],
           "options": {
             "jestConfig": "libs/types/jest.config.js",
             "passWithNoTests": true
