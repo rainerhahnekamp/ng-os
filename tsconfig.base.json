@@ -20,7 +20,9 @@
       ],
       "@ng-app-platform/ng-app-platform/core": [
         "libs/ng-app-platform/core/src/index.ts"
-      ]
+      ],
+      "@ng-app-platform/memory/feature": ["libs/memory/feature/src/index.ts"],
+      "@ng-app-platform/types": ["libs/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

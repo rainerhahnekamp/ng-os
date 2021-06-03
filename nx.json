@@ -63,6 +63,12 @@
     },
     "ng-app-platform-core": {
       "tags": []
+    },
+    "memory-feature": {
+      "tags": []
+    },
+    "types": {
+      "tags": []
     }
   }
 }

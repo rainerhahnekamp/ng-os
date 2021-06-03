@@ -7,5 +7,7 @@ module.exports = {
     '<rootDir>/apps/weather',
     '<rootDir>/libs/vocabulary-trainer/feature',
     '<rootDir>/libs/ng-app-platform/feature',
+    '<rootDir>/libs/memory/feature',
+    '<rootDir>/libs/types',
   ],
 };

@@ -29,22 +29,17 @@ export class RouteAppLinker {
         loadRemoteModule({
           remoteEntry: appConfiguration.remoteEntry,
           remoteName: appConfiguration.remoteName,
-          exposedModule: appConfiguration.exposedModule,
-        }).then((m) => m[appConfiguration.moduleName]),
+          exposedModule: appConfiguration.exposedModule
+        }).then((m) => m[appConfiguration.moduleName])
     }));
-    console.log(routes);
 
     @NgModule({
-      imports: [CommonModule, RouterModule.forChild(routes)],
+      imports: [CommonModule, RouterModule.forChild(routes)]
     })
-    class WrapperModule {}
+    class WrapperModule {
+    }
 
     return WrapperModule;
-    // return loadRemoteModule<VocabularyTrainerModule>({
-    //   remoteEntry: 'http://localhost:4201/remoteEntry.js',
-    //   remoteName: 'vocabularyTrainer',
-    //   exposedModule: './Module',
-    // }).then((m) => m.VocabularyTrainerFeatureModule);
   }
 }
 

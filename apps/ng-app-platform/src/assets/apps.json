@@ -18,6 +18,7 @@
       "remoteName": "memory",
       "remoteEntry": "http://localhost:4202/remoteEntry.js",
       "exposedModule": "./Module",
+      "iconUrl": "http://localhost:4202/assets/logo.png",
       "moduleName": "MemoryFeatureModule"
     },
     {
