@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/ng-app-platform/feature',
     '<rootDir>/libs/memory/feature',
     '<rootDir>/libs/types',
+    '<rootDir>/libs/ng-app-platform/security',
   ],
 };

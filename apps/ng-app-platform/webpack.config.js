@@ -4,16 +4,16 @@ const path = require('path');
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
-  /* mapped paths to share */
+  '@ng-app-platform/types',
 ]);
 
 module.exports = {
   output: {
     uniqueName: 'ng-app-platform',
-    publicPath: 'auto'
+    publicPath: 'auto',
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   plugins: [
     new ModuleFederationPlugin({
@@ -22,14 +22,14 @@ module.exports = {
         '@angular/common': { singleton: true, strictVersion: true },
         '@angular/router': { singleton: true, strictVersion: true },
 
-        ...sharedMappings.getDescriptors()
-      }
+        ...sharedMappings.getDescriptors(),
+      },
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
   ],
   resolve: {
     alias: {
-      ...sharedMappings.getAliases()
-    }
-  }
+      ...sharedMappings.getAliases(),
+    },
+  },
 };

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { User } from './user';
 
-export interface UserService {
-  user$: Observable<User>
+export abstract class UserService {
+  abstract user$: Observable<User>;
 }

@@ -7,7 +7,7 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "nx": "nx",
     "start": "ng serve",
-    "start:all": "run-p start start:vocabulary-trainer start:memory",
+    "start:all": "run-p start start:vocabulary-trainer",
     "start:vocabulary-trainer": "ng serve --project vocabulary-trainer",
     "start:memory": "ng serve --project memory",
     "start:todo": "ng serve --project todo",

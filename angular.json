@@ -1,5 +1,35 @@
 {
   "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "b3b5bf5d-32e0-4ed8-99df-46c639f793c6"
+  },
+  "defaultProject": "ng-app-platform",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "ng-app-platform": {
       "projectType": "application",
@@ -682,34 +712,31 @@
           }
         }
       }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "analytics": "b3b5bf5d-32e0-4ed8-99df-46c639f793c6"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
+    },
+    "ng-app-platform-security": {
+      "projectType": "library",
+      "root": "libs/ng-app-platform/security",
+      "sourceRoot": "libs/ng-app-platform/security/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng-app-platform/security"],
+          "options": {
+            "jestConfig": "libs/ng-app-platform/security/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng-app-platform/security/src/**/*.ts",
+              "libs/ng-app-platform/security/src/**/*.html"
+            ]
+          }
+        }
       }
-    },
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
     }
-  },
-  "defaultProject": "ng-app-platform"
+  }
 }

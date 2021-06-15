@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { units } from './en';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +13,13 @@ import { RouterModule } from '@angular/router';
         {
           path: '',
           loadChildren: () =>
-            import('@ng-app-platform/vocabulary-trainer/feature').then(
-              (m) => m.VocabularyTrainerFeatureModule
+            import('@ng-app-platform/vocabulary-trainer/feature').then((m) =>
+              m.VocabularyTrainerFeatureModule.forRoot(
+                units[0].words.map(([original, translation]) => ({
+                  original,
+                  translation,
+                }))
+              )
             ),
         },
       ],
