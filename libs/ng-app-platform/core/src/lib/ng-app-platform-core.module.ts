@@ -1,17 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../modules.d.ts" />
 
-import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { SecurityGuard } from '@ng-app-platform/ng-app-platform/security';
+import { AppsConfigurationLoaderGuard } from './apps-configuration-loader.guard';
 import { CanvasComponent } from './canvas/canvas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatButtonModule } from '@angular/material/button';
 import { RouteAppLinker, routeAppLinker } from './route-app-linker';
-import { AppsConfigurationLoaderGuard } from './apps-configuration-loader.guard';
+
+4;
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { AppsConfigurationLoaderGuard } from './apps-configuration-loader.guard'
       {
         path: '',
         component: CanvasComponent,
+        canActivate: [SecurityGuard],
         children: [
           {
             path: '',

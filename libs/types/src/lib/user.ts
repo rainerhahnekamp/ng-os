@@ -4,3 +4,10 @@ export interface User {
   name: string;
   email: string;
 }
+
+export const ANONYMOUS_USER: User = {
+  id: 0,
+  firstname: '',
+  name: '',
+  email: '',
+};
