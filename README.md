@@ -12,11 +12,27 @@ an "App Store" like application in Angular by using module federation.
 - Share Common dependencies like lodash or dayjs
 - Mocked Central Services for Remotes
 
-## Bugs
+## Shared UserService
 
-- ng add material can't find bootstrap and fails
-- websocket in serve is disabled
-- adding material's css in angular.json keeps serve stalling
+The UserService is provided by the host. It is splitted up into two modules. A
+types lib which just contains the token (equivalent of Interface in Java or C#
+DIs). The token is
+
+- exposed to the remotes via the nx rules and
+- set as shared in the webpack.config (**very important**)
+
+The security lib contains the implementation of the `UserService` and is only
+available to the host. The `DefaultUserService` itself is provided two times.
+First, as the actual implementation of the `UserService` and secondly, as
+service of type `DefaultUserService` on its own. That is required because it
+provides additional methods that should only be used by the
+components (`LoginComponent`)
+inside the security module itself.
+
+The providing for `DefaultUserService` is done via the
+decorator `@Injectable({providedIn: 'root'})`. The providing of the
+user `UserService` is done via the **app.module** which uses `useExisting` to
+force a singleton.
 
 ## Commands for a fresh build
 
