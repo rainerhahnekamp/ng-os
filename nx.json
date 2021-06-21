@@ -23,26 +23,28 @@
     }
   },
   "projects": {
-    "ng-app-platform": {
-      "tags": []
-    },
-    "ng-app-platform-e2e": {
-      "tags": [],
-      "implicitDependencies": ["ng-app-platform"]
-    },
-    "vocabulary-trainer": {
-      "tags": []
-    },
-    "vocabulary-trainer-e2e": {
-      "tags": [],
-      "implicitDependencies": ["vocabulary-trainer"]
-    },
     "memory": {
       "tags": []
     },
     "memory-e2e": {
       "tags": [],
       "implicitDependencies": ["memory"]
+    },
+    "memory-feature": {
+      "tags": []
+    },
+    "ng-app-platform": {
+      "tags": []
+    },
+    "ng-app-platform-core": {
+      "tags": []
+    },
+    "ng-app-platform-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ng-app-platform"]
+    },
+    "ng-app-platform-security": {
+      "tags": []
     },
     "todo": {
       "tags": []
@@ -51,27 +53,25 @@
       "tags": [],
       "implicitDependencies": ["todo"]
     },
+    "types": {
+      "tags": []
+    },
+    "vocabulary-trainer": {
+      "tags": []
+    },
+    "vocabulary-trainer-e2e": {
+      "tags": [],
+      "implicitDependencies": ["vocabulary-trainer"]
+    },
+    "vocabulary-trainer-feature": {
+      "tags": []
+    },
     "weather": {
       "tags": []
     },
     "weather-e2e": {
       "tags": [],
       "implicitDependencies": ["weather"]
-    },
-    "vocabulary-trainer-feature": {
-      "tags": []
-    },
-    "ng-app-platform-core": {
-      "tags": []
-    },
-    "memory-feature": {
-      "tags": []
-    },
-    "types": {
-      "tags": []
-    },
-    "ng-app-platform-security": {
-      "tags": []
     }
   }
 }

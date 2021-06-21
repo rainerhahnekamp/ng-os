@@ -31,6 +31,148 @@
     }
   },
   "projects": {
+    "memory": {
+      "projectType": "application",
+      "root": "apps/memory",
+      "sourceRoot": "apps/memory/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/apps/memory",
+            "index": "apps/memory/src/index.html",
+            "main": "apps/memory/src/main.ts",
+            "polyfills": "apps/memory/src/polyfills.ts",
+            "tsConfig": "apps/memory/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/memory/src/favicon.ico", "apps/memory/src/assets"],
+            "styles": ["apps/memory/src/styles.scss"],
+            "scripts": [],
+            "extraWebpackConfig": "apps/memory/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/memory/src/environments/environment.ts",
+                  "with": "apps/memory/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "extraWebpackConfig": "apps/memory/webpack.prod.config.js"
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "memory:build",
+            "extraWebpackConfig": "apps/memory/webpack.config.js",
+            "port": 4202
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "memory:build:production",
+              "extraWebpackConfig": "apps/memory/webpack.prod.config.js"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "memory:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/memory/src/**/*.ts",
+              "apps/memory/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "outputs": ["coverage/apps/memory"],
+          "options": {
+            "jestConfig": "apps/memory/jest.config.js",
+            "passWithNoTests": true,
+            "extraWebpackConfig": "apps/memory/webpack.config.js"
+          }
+        }
+      }
+    },
+    "memory-e2e": {
+      "root": "apps/memory-e2e",
+      "sourceRoot": "apps/memory-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/memory-e2e/cypress.json",
+            "tsConfig": "apps/memory-e2e/tsconfig.e2e.json",
+            "devServerTarget": "memory:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "memory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/memory-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "memory-feature": {
+      "projectType": "library",
+      "root": "libs/memory/feature",
+      "sourceRoot": "libs/memory/feature/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/memory/feature/src/**/*.ts",
+              "libs/memory/feature/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/memory/feature"],
+          "options": {
+            "jestConfig": "libs/memory/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "ng-app-platform": {
       "projectType": "application",
       "root": "apps/ng-app-platform",
@@ -125,6 +267,31 @@
         }
       }
     },
+    "ng-app-platform-core": {
+      "projectType": "library",
+      "root": "libs/ng-app-platform/core",
+      "sourceRoot": "libs/ng-app-platform/core/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng-app-platform/core/src/**/*.ts",
+              "libs/ng-app-platform/core/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng-app-platform/core"],
+          "options": {
+            "jestConfig": "libs/ng-app-platform/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "ng-app-platform-e2e": {
       "root": "apps/ng-app-platform-e2e",
       "sourceRoot": "apps/ng-app-platform-e2e/src",
@@ -147,6 +314,167 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/ng-app-platform-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "ng-app-platform-security": {
+      "projectType": "library",
+      "root": "libs/ng-app-platform/security",
+      "sourceRoot": "libs/ng-app-platform/security/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng-app-platform/security"],
+          "options": {
+            "jestConfig": "libs/ng-app-platform/security/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng-app-platform/security/src/**/*.ts",
+              "libs/ng-app-platform/security/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "todo": {
+      "projectType": "application",
+      "root": "apps/todo",
+      "sourceRoot": "apps/todo/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/todo",
+            "index": "apps/todo/src/index.html",
+            "main": "apps/todo/src/main.ts",
+            "polyfills": "apps/todo/src/polyfills.ts",
+            "tsConfig": "apps/todo/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/todo/src/favicon.ico", "apps/todo/src/assets"],
+            "styles": ["apps/todo/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/todo/src/environments/environment.ts",
+                  "with": "apps/todo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "todo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "todo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "todo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/todo/src/**/*.ts",
+              "apps/todo/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/todo"],
+          "options": {
+            "jestConfig": "apps/todo/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "todo-e2e": {
+      "root": "apps/todo-e2e",
+      "sourceRoot": "apps/todo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/todo-e2e/cypress.json",
+            "tsConfig": "apps/todo-e2e/tsconfig.e2e.json",
+            "devServerTarget": "todo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "todo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/todo-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "types": {
+      "projectType": "library",
+      "root": "libs/types",
+      "sourceRoot": "libs/types/src",
+      "prefix": "ng-app-platform",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/types/src/**/*.ts",
+              "libs/types/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/types"],
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -271,230 +599,27 @@
         }
       }
     },
-    "memory": {
-      "projectType": "application",
-      "root": "apps/memory",
-      "sourceRoot": "apps/memory/src",
+    "vocabulary-trainer-feature": {
+      "projectType": "library",
+      "root": "libs/vocabulary-trainer/feature",
+      "sourceRoot": "libs/vocabulary-trainer/feature/src",
       "prefix": "ng-app-platform",
       "architect": {
-        "build": {
-          "builder": "ngx-build-plus:browser",
-          "options": {
-            "outputPath": "dist/apps/memory",
-            "index": "apps/memory/src/index.html",
-            "main": "apps/memory/src/main.ts",
-            "polyfills": "apps/memory/src/polyfills.ts",
-            "tsConfig": "apps/memory/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/memory/src/favicon.ico", "apps/memory/src/assets"],
-            "styles": ["apps/memory/src/styles.scss"],
-            "scripts": [],
-            "extraWebpackConfig": "apps/memory/webpack.config.js"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/memory/src/environments/environment.ts",
-                  "with": "apps/memory/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ],
-              "extraWebpackConfig": "apps/memory/webpack.prod.config.js"
-            }
-          }
-        },
-        "serve": {
-          "builder": "ngx-build-plus:dev-server",
-          "options": {
-            "browserTarget": "memory:build",
-            "extraWebpackConfig": "apps/memory/webpack.config.js",
-            "port": 4202
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "memory:build:production",
-              "extraWebpackConfig": "apps/memory/webpack.prod.config.js"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "memory:build"
-          }
-        },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/memory/src/**/*.ts",
-              "apps/memory/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "ngx-build-plus:karma",
-          "outputs": ["coverage/apps/memory"],
-          "options": {
-            "jestConfig": "apps/memory/jest.config.js",
-            "passWithNoTests": true,
-            "extraWebpackConfig": "apps/memory/webpack.config.js"
-          }
-        }
-      }
-    },
-    "memory-e2e": {
-      "root": "apps/memory-e2e",
-      "sourceRoot": "apps/memory-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/memory-e2e/cypress.json",
-            "tsConfig": "apps/memory-e2e/tsconfig.e2e.json",
-            "devServerTarget": "memory:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "memory:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/memory-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "todo": {
-      "projectType": "application",
-      "root": "apps/todo",
-      "sourceRoot": "apps/todo/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/todo",
-            "index": "apps/todo/src/index.html",
-            "main": "apps/todo/src/main.ts",
-            "polyfills": "apps/todo/src/polyfills.ts",
-            "tsConfig": "apps/todo/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/todo/src/favicon.ico", "apps/todo/src/assets"],
-            "styles": ["apps/todo/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/todo/src/environments/environment.ts",
-                  "with": "apps/todo/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "todo:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "todo:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "todo:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/todo/src/**/*.ts",
-              "apps/todo/src/**/*.html"
+              "libs/vocabulary-trainer/feature/src/**/*.ts",
+              "libs/vocabulary-trainer/feature/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/todo"],
+          "outputs": ["coverage/libs/vocabulary-trainer/feature"],
           "options": {
-            "jestConfig": "apps/todo/jest.config.js",
+            "jestConfig": "libs/vocabulary-trainer/feature/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "todo-e2e": {
-      "root": "apps/todo-e2e",
-      "sourceRoot": "apps/todo-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/todo-e2e/cypress.json",
-            "tsConfig": "apps/todo-e2e/tsconfig.e2e.json",
-            "devServerTarget": "todo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "todo:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/todo-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -609,131 +734,6 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/weather-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
-    "vocabulary-trainer-feature": {
-      "projectType": "library",
-      "root": "libs/vocabulary-trainer/feature",
-      "sourceRoot": "libs/vocabulary-trainer/feature/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/vocabulary-trainer/feature/src/**/*.ts",
-              "libs/vocabulary-trainer/feature/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/vocabulary-trainer/feature"],
-          "options": {
-            "jestConfig": "libs/vocabulary-trainer/feature/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "ng-app-platform-core": {
-      "projectType": "library",
-      "root": "libs/ng-app-platform/core",
-      "sourceRoot": "libs/ng-app-platform/core/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/ng-app-platform/core/src/**/*.ts",
-              "libs/ng-app-platform/core/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ng-app-platform/core"],
-          "options": {
-            "jestConfig": "libs/ng-app-platform/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "memory-feature": {
-      "projectType": "library",
-      "root": "libs/memory/feature",
-      "sourceRoot": "libs/memory/feature/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/memory/feature/src/**/*.ts",
-              "libs/memory/feature/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/memory/feature"],
-          "options": {
-            "jestConfig": "libs/memory/feature/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "types": {
-      "projectType": "library",
-      "root": "libs/types",
-      "sourceRoot": "libs/types/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/types/src/**/*.ts",
-              "libs/types/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/types"],
-          "options": {
-            "jestConfig": "libs/types/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "ng-app-platform-security": {
-      "projectType": "library",
-      "root": "libs/ng-app-platform/security",
-      "sourceRoot": "libs/ng-app-platform/security/src",
-      "prefix": "ng-app-platform",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ng-app-platform/security"],
-          "options": {
-            "jestConfig": "libs/ng-app-platform/security/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/ng-app-platform/security/src/**/*.ts",
-              "libs/ng-app-platform/security/src/**/*.html"
-            ]
           }
         }
       }

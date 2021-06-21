@@ -4,7 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgAppPlatformCoreModule } from '@ng-app-platform/ng-app-platform/core';
-import { NgAppPlatformSecurityModule } from '@ng-app-platform/ng-app-platform/security';
+import {
+  DefaultUserService,
+  NgAppPlatformSecurityModule,
+} from '@ng-app-platform/ng-app-platform/security';
+import { UserService } from '@ng-app-platform/types';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -18,5 +22,11 @@ import { AppComponent } from './app.component';
     RouterModule,
   ],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: UserService,
+      useClass: DefaultUserService,
+    },
+  ],
 })
 export class AppModule {}
