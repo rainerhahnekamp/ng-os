@@ -22,17 +22,10 @@ DIs). The token is
 - set as shared in the webpack.config (**very important**)
 
 The security lib contains the implementation of the `UserService` and is only
-available to the host. The `DefaultUserService` itself is provided two times.
-First, as the actual implementation of the `UserService` and secondly, as
-service of type `DefaultUserService` on its own. That is required because it
-provides additional methods that should only be used by the
-components (`LoginComponent`)
-inside the security module itself.
+available to the host.
 
-The providing for `DefaultUserService` is done via the
-decorator `@Injectable({providedIn: 'root'})`. The providing of the
-user `UserService` is done via the **app.module** which uses `useExisting` to
-force a singleton.
+The providing for `UserService` is done via the decorator of the security module
+itself.
 
 ## Commands for a fresh build
 
