@@ -1,22 +1,33 @@
 <h2>Login</h2>
-<div class="login">
-  <form (ngSubmit)="login()" [formGroup]="formGroup">
-    <mat-form-field appearance="fill">
-      <mat-label>Username</mat-label>
-      <input formControlName="username" matInput required />
-      <mat-error *ngIf="formGroup.controls['username'].invalid"
-        >This field is required
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
-      <input formControlName="password" matInput required />
-      <mat-error *ngIf="formGroup.controls['password'].invalid"
-        >This field is required
-      </mat-error>
-    </mat-form-field>
-    <div>
-      <button mat-button type="submit">Login</button>
-    </div>
-  </form>
+<div>
+  <ng-container
+    *ngIf="(isLoggedIn$ | async) === false; else loggedIn"
+    class="login"
+  >
+    <form (ngSubmit)="login()" [formGroup]="formGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput required />
+        <mat-error *ngIf="formGroup.controls['username'].invalid"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput required type="password" />
+        <mat-error *ngIf="formGroup.controls['password'].invalid"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button color="primary" mat-raised-button type="submit">Login</button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-template #loggedIn>
+    <h3>You are already logged in</h3>
+    <a color="primary" mat-raised-button routerLink="/logout" type="button"
+      >Logout</a
+    >
+  </ng-template>
 </div>

@@ -22,10 +22,12 @@
       "@ng-app-platform/ng-app-platform/security": [
         "libs/ng-app-platform/security/src/index.ts"
       ],
+      "@ng-app-platform/todo/feature": ["libs/todo/feature/src/index.ts"],
       "@ng-app-platform/types": ["libs/types/src/index.ts"],
       "@ng-app-platform/vocabulary-trainer/feature": [
         "libs/vocabulary-trainer/feature/src/index.ts"
-      ]
+      ],
+      "@ng-app-platform/weather/feature": ["libs/weather/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

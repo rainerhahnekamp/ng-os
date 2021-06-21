@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigurationsSupplier } from '../app-configurations-supplier.service';
 import { AppConfiguration } from '../models/app-configuration';
@@ -9,6 +9,7 @@ import { AppConfiguration } from '../models/app-configuration';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  appConfigurations$: Observable<AppConfiguration[]>;
+  appConfigurations$: Observable<AppConfiguration[]> | undefined;
+
   constructor(public appConfigurationsSupplier: AppConfigurationsSupplier) {}
 }

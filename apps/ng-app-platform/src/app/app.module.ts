@@ -25,7 +25,7 @@ import { AppComponent } from './app.component';
   providers: [
     {
       provide: UserService,
-      useClass: DefaultUserService,
+      useExisting: DefaultUserService,
     },
   ],
 })

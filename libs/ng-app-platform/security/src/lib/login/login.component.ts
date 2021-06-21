@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ANONYMOUS_USER } from '@ng-app-platform/types';
+import { map } from 'rxjs/operators';
 import { DefaultUserService } from '../default-user.service';
 
 @Component({
@@ -13,6 +15,10 @@ export class LoginComponent {
     username: [],
     password: [],
   });
+
+  isLoggedIn$ = this.userService.user$.pipe(
+    map((user) => user !== ANONYMOUS_USER)
+  );
 
   constructor(
     private userService: DefaultUserService,

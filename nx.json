@@ -1,19 +1,15 @@
 {
+  "npmScope": "ng-app-platform",
+  "affected": {
+    "defaultBase": "master"
+  },
   "implicitDependencies": {
-    "angular.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    ".eslintrc.json": "*",
-    "nx.json": "*"
+    ".eslintrc.json": "*"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
-  "npmScope": "ng-app-platform",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -32,6 +28,13 @@
     },
     "memory-feature": {
       "tags": []
+    },
+    "ng-amp": {
+      "tags": []
+    },
+    "ng-amp-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ng-amp"]
     },
     "ng-app-platform": {
       "tags": []
@@ -53,6 +56,9 @@
       "tags": [],
       "implicitDependencies": ["todo"]
     },
+    "todo-feature": {
+      "tags": []
+    },
     "types": {
       "tags": []
     },
@@ -66,12 +72,8 @@
     "vocabulary-trainer-feature": {
       "tags": []
     },
-    "weather": {
+    "weather-feature": {
       "tags": []
-    },
-    "weather-e2e": {
-      "tags": [],
-      "implicitDependencies": ["weather"]
     }
   }
 }

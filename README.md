@@ -10,6 +10,7 @@ an "App Store" like application in Angular by using module federation.
 - Calculator as component app
 - Notes App
 - Share Common dependencies like lodash or dayjs
+- Mocked Central Services for Remotes
 
 ## Bugs
 
@@ -22,7 +23,7 @@ an "App Store" like application in Angular by using module federation.
 ```bash
 npx nx create-workspace ng-app-platform
 
-yarn add @angular/material @angular/compiler
+yarn add @angular/material @angular/cdk
 
 yarn add -D ngx-build-plus @angular-architects/module-federation
 
