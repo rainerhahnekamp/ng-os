@@ -8,14 +8,18 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([{
-      path: 'memory',
-      loadChildren: () => import('@ng-app-platform/memory/feature').then(m => m.MemoryFeatureModule)
-
-    }], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        {
+          path: 'memory',
+          loadChildren: () =>
+            import('@ng-os/memory/feature').then((m) => m.MemoryFeatureModule),
+        },
+      ],
+      { initialNavigation: 'enabled' }
+    ),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

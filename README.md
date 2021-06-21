@@ -1,5 +1,5 @@
-This is a case study for an application showing the possibility to implement
-an "App Store" like application in Angular by using module federation.
+This is a case study for an application showing the possibility to implement an
+Android-like application in Angular by using module federation.
 
 ## Features
 
@@ -9,6 +9,7 @@ an "App Store" like application in Angular by using module federation.
 - Possibility to use just components (part of the config)
 - Calculator as component app
 - Notes App
+- WinAmp Clone
 - Share Common dependencies like lodash or dayjs
 - Mocked Central Services for Remotes
 
@@ -30,7 +31,7 @@ itself.
 ## Commands for a fresh build
 
 ```bash
-npx nx create-workspace ng-app-platform
+npx nx create-workspace ng-os
 
 yarn add @angular/material @angular/cdk
 
@@ -46,9 +47,9 @@ npx ng g application weather --routing
 
 npx ng g application ng-amp --routing
 
-npx nx g lib core --directory ng-app-platform
+npx nx g lib core --directory ng-os
 
-npx nx g lib security --directory ng-app-platform
+npx nx g lib security --directory ng-os
 
 npx ng g lib types
 
@@ -60,7 +61,7 @@ npx ng g lib feature --directory vocabulary-trainer
 
 npx ng g lib feature --directory weather
 
-npx ng add @angular-architects/module-federation --project ng-app-platform --port 4200
+npx ng add @angular-architects/module-federation --project ng-os --port 4200
 
 npx ng add @angular-architects/module-federation --project vocabulary-trainer --port 4201
 

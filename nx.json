@@ -1,5 +1,5 @@
 {
-  "npmScope": "ng-app-platform",
+  "npmScope": "ng-os",
   "affected": {
     "defaultBase": "master"
   },
@@ -36,17 +36,17 @@
       "tags": [],
       "implicitDependencies": ["ng-amp"]
     },
-    "ng-app-platform": {
+    "ng-os": {
       "tags": []
     },
-    "ng-app-platform-core": {
+    "ng-os-core": {
       "tags": []
     },
-    "ng-app-platform-e2e": {
+    "ng-os-e2e": {
       "tags": [],
-      "implicitDependencies": ["ng-app-platform"]
+      "implicitDependencies": ["ng-os"]
     },
-    "ng-app-platform-security": {
+    "ng-os-security": {
       "tags": []
     },
     "todo": {

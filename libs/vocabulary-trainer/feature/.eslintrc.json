@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ng-app-platform",
+            "prefix": "ng-os",
             "style": "kebab-case"
           }
         ]

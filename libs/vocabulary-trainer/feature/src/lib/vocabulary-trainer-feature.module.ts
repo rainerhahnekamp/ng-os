@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgAppPlatformSecurityModule } from '@ng-app-platform/ng-app-platform/security';
 import { OverviewComponent } from './overview/overview.component';
 import { Vocabulary } from './vocabulary';
 import { VOCABULARY_SET } from './vocabulary-set';
@@ -10,7 +9,6 @@ import { VOCABULARY_SET } from './vocabulary-set';
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: OverviewComponent }]),
-    NgAppPlatformSecurityModule,
   ],
   declarations: [OverviewComponent],
 })

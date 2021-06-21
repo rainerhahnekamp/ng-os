@@ -4,7 +4,7 @@ const path = require('path');
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
-  '@ng-app-platform/types',
+  '@ng-os/types',
 ]);
 
 module.exports = {

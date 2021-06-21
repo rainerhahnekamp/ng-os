@@ -15,19 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ng-app-platform/memory/feature": ["libs/memory/feature/src/index.ts"],
-      "@ng-app-platform/ng-app-platform/core": [
-        "libs/ng-app-platform/core/src/index.ts"
-      ],
-      "@ng-app-platform/ng-app-platform/security": [
-        "libs/ng-app-platform/security/src/index.ts"
-      ],
-      "@ng-app-platform/todo/feature": ["libs/todo/feature/src/index.ts"],
-      "@ng-app-platform/types": ["libs/types/src/index.ts"],
-      "@ng-app-platform/vocabulary-trainer/feature": [
+      "@ng-os/memory/feature": ["libs/memory/feature/src/index.ts"],
+      "@ng-os/ng-os/core": ["libs/ng-os/core/src/index.ts"],
+      "@ng-os/ng-os/security": ["libs/ng-os/security/src/index.ts"],
+      "@ng-os/todo/feature": ["libs/todo/feature/src/index.ts"],
+      "@ng-os/types": ["libs/types/src/index.ts"],
+      "@ng-os/vocabulary-trainer/feature": [
         "libs/vocabulary-trainer/feature/src/index.ts"
       ],
-      "@ng-app-platform/weather/feature": ["libs/weather/feature/src/index.ts"]
+      "@ng-os/weather/feature": ["libs/weather/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

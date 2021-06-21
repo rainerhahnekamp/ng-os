@@ -13,7 +13,7 @@ import { units } from './en';
         {
           path: '',
           loadChildren: () =>
-            import('@ng-app-platform/vocabulary-trainer/feature').then((m) =>
+            import('@ng-os/vocabulary-trainer/feature').then((m) =>
               m.VocabularyTrainerFeatureModule.forRoot(
                 units[0].words.map(([original, translation]) => ({
                   original,

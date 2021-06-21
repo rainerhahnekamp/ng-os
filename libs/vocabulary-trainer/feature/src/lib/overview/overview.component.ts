@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '@ng-app-platform/types';
+import { Component } from '@angular/core';
+import { UserService } from '@ng-os/types';
 
 @Component({
-  selector: 'ng-app-platform-overview',
+  selector: 'ng-os-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
 })
-export class OverviewComponent implements OnInit {
+export class OverviewComponent {
   constructor(public userService: UserService) {}
-
-  ngOnInit(): void {}
 }
