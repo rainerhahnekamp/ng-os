@@ -1,31 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ANONYMOUS_USER, User, UserService } from '@ng-app-platform/types';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { UserService } from '@ng-app-platform/types';
+import { UserSubject } from './user-subject.service';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class DefaultUserService implements UserService {
-  user$: Subject<User>;
-  private storageKey = 'curent_user';
+  user$ = this.userSubject.user$.asObservable();
 
-  constructor() {
-    console.log('init');
-    const lsUser = localStorage.getItem(this.storageKey);
-    let user: User;
-    if (lsUser) {
-      user = JSON.parse(lsUser);
-    } else {
-      user = ANONYMOUS_USER;
-    }
-    this.user$ = new BehaviorSubject<User>(user);
-  }
-
-  login(user: User) {
-    this.user$.next(user);
-    localStorage.setItem(this.storageKey, JSON.stringify(user));
-  }
-
-  logout() {
-    localStorage.removeItem(this.storageKey);
-    this.user$.next(ANONYMOUS_USER);
-  }
+  constructor(private userSubject: UserSubject) {}
 }
